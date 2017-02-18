@@ -1,22 +1,18 @@
 import { createStore, combineReducers } from 'redux'
-import { combineForms } from 'react-redux-form'
+import { reducer as form } from 'redux-form'
 
-const rules = (state = {rules: []}, action) => {
+const rules = (state = {rules: [], showRuleDialog: false}, action) => {
   switch (action.type) {
     case 'rule:add':
-      console.log(action)
       return state
+    case 'rule:show':
+      return {...state, showRuleDialog: true}
+    case 'rule:hide':
+      return {...state, showRuleDialog: false}
     default:
       return state
   }
 }
-
-const form = combineForms({
-  rules: {
-    name: '',
-    params: []
-  }
-})
 
 const store = createStore(
   combineReducers({

@@ -1,24 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Form, Control } from 'react-redux-form'
+import { Field, reduxForm } from 'redux-form'
 
-export const FormAddRule = ({addRule}) => (
-  <Form model='rule' onSubmit={addRule}>
+export const FormAddRule = ({handleSubmit, onCancel}) => (
+  <form onSubmit={handleSubmit}>
     <h3>Event</h3>
-    <label>Name</label>
-    <Control.text model='rule.name' />
+    <div className='field'>
+      <label htmlFor='name'>Name</label>
+      <Field name='name' component='input' type='text' />
+    </div>
     <button type='submit'>add</button>
-  </Form>
+    <button onClick={e => { onCancel(); e.preventDefault() }} type='cancel'>cancel</button>
+  </form>
 )
 
-const mapStateToProps = state => ({
-})
-
-const mapDispatchToProps = dispatch => ({
-  addRule: data => {
-    console.log('addRule', data)
-    dispatch({type: 'rule:add', data})
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(FormAddRule)
+export default reduxForm({form: 'rule'})(FormAddRule)
