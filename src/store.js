@@ -1,39 +1,27 @@
 import { createStore, combineReducers } from 'redux'
+import { combineForms } from 'react-redux-form'
 
-const rules = (state = {rules: [], eventParams: [], buildingRule: false}, action) => {
-  let buildingRule
+const rules = (state = {rules: []}, action) => {
   switch (action.type) {
-    case 'add:show':
-      return {...state, eventParams: [], buildingRule: {event: {type: '', params: {}}}}
-
-    case 'add:cancel':
-      return {...state, buildingRule: false}
-
-    case 'add:save':
-      const rules = state.rules.slice()
-      state.eventParams.forEach(p => {
-        action.data.rule.event.type.params[ p[0] ] = p[1]
-      })
-      rules.push(action.data.rule)
-      return {...state, rules, buildingRule: false}
-
-    case 'add:update':
-      buildingRule = {...state.buildingRule, ...action.data}
-      return {...state, buildingRule}
-
-    case 'add:param':
-      const eventParams = state.eventParams.slice()
-      eventParams.push(['', ''])
-      return {...state, eventParams}
-
+    case 'rule:add':
+      console.log(action)
+      return state
     default:
       return state
   }
 }
 
+const form = combineForms({
+  rules: {
+    name: '',
+    params: []
+  }
+})
+
 const store = createStore(
   combineReducers({
-    rules
+    rules,
+    form
   }),
   typeof window !== 'undefined' && window.devToolsExtension && process.env.NODE_ENV === 'development' ? window.devToolsExtension() : undefined
 )

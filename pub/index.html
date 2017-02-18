@@ -2,43 +2,6 @@
   <head>
     <title>json-rules-engine UI</title>
     <link rel="stylesheet" href="http://yegor256.github.io/tacit/tacit.min.css"/>
-    <style>
-      .overlay {
-        display: flex;
-        top: 0;
-        left: 0;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.8);
-      }
-      .dialog {
-        background: white;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        overflow: auto;
-      }
-      @media (max-width: 600px) {
-        .dialog {
-          height: 100%;
-        }
-      }
-      @media (min-width: 600px) {
-        .overlay {
-          justify-content: center;
-          align-items: center;
-        }
-        .dialog {
-          min-width: 80%;
-          min-height: 50%;
-          border-radius: 2%;
-          flex: 0;
-        }
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>

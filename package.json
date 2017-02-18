@@ -23,7 +23,7 @@
     "url": "https://github.com/konsumer/json-rules-engine-ui/issues"
   },
   "homepage": "https://github.com/konsumer/json-rules-engine-ui#readme",
-    "babel": {
+  "babel": {
     "presets": [
       "latest",
       "react"
@@ -51,7 +51,8 @@
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-redux-form": "^1.5.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-loader": "^6.3.2",
