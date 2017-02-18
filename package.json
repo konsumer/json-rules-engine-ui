@@ -1,0 +1,68 @@
+{
+  "name": "json-rules-engine-ui",
+  "version": "1.0.0",
+  "description": "React UI for building rules for json-rules-engine",
+  "scripts": {
+    "test": "jest",
+    "start": "NODE_ENV=development webpack-dev-server --history-api-fallback --hot --inline --no-info --content-base=./pub",
+    "build": "NODE_ENV=production webpack",
+    "deploy": "gh-pages-deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/json-rules-engine-ui.git"
+  },
+  "keywords": [
+    "json-rules-engine",
+    "react",
+    "redux"
+  ],
+  "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/json-rules-engine-ui/issues"
+  },
+  "homepage": "https://github.com/konsumer/json-rules-engine-ui#readme",
+    "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "react-hmre"
+        ]
+      }
+    }
+  },
+  "gh-pages-deploy": {
+    "staticpath": "pub",
+    "noprompt": true,
+    "prep": [
+      "build"
+    ]
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "react-redux-form": "^1.5.5",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "gh-pages-deploy": "^0.4.2",
+    "jest": "^18.1.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  }
+}
