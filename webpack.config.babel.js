@@ -3,7 +3,6 @@ import { resolve } from 'path'
 const { UglifyJsPlugin, OccurrenceOrderPlugin } = optimize
 
 const config = {
-  devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
       './src/index.js',
@@ -18,7 +17,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.jsx?$/i, exclude: /(node_modules)/, loader: 'babel-loader' },
-      { test: /\.css?$/, loaders: [ 'style-loader', 'raw-loader' ] }
+      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] }
     ]
   },
   plugins: [
@@ -28,6 +27,10 @@ const config = {
     }),
     new NoEmitOnErrorsPlugin()
   ]
+}
+
+if (process.env.NODE_ENV === 'development') {
+  config.devtool = 'cheap-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
