@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf } from '@kadira/storybook'
+import { storiesOf, action } from '@kadira/storybook'
 import { ConditionManager } from './ConditionManager'
 
 const demoConditions = {
@@ -28,8 +28,8 @@ const demoConditions = {
 
 storiesOf('ConditionManager', module)
   .add('with no conditions', () => (
-    <ConditionManager conditions={{}} />
+    <ConditionManager onConditionRemove={action('remove')} conditions={{}} />
   ))
   .add('with some conditions', () => (
-    <ConditionManager conditions={demoConditions} />
+    <ConditionManager onConditionRemove={action('remove')} conditions={demoConditions} />
   ))
