@@ -6,7 +6,9 @@
     "test": "jest",
     "start": "NODE_ENV=development webpack-dev-server --history-api-fallback --hot --inline --no-info --content-base=./pub",
     "build": "NODE_ENV=production webpack",
-    "deploy": "gh-pages-deploy"
+    "deploy": "gh-pages-deploy",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -47,13 +49,16 @@
     ]
   },
   "dependencies": {
+    "raw-loader": "^0.5.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
-    "redux-form": "^6.5.0"
+    "redux-form": "^6.5.0",
+    "style-loader": "^0.13.1"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-latest": "^6.22.0",

@@ -18,7 +18,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.jsx?$/i, exclude: /(node_modules)/, loader: 'babel-loader' },
-      { test: /\.json$/i, loaders: ['json-loader'] }
+      { test: /\.css?$/, loaders: [ 'style-loader', 'raw-loader' ] }
     ]
   },
   plugins: [

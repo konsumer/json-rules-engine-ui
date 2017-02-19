@@ -2,13 +2,15 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import ParamManager from './ParamManager'
+import ConditionManager from './ConditionManager'
 
 export const FormAddRule = ({handleSubmit, onCancel}) => (
-  <form onSubmit={handleSubmit} className='is-active modal--show' tabIndex='-1' role='dialog'>
+  <form onSubmit={handleSubmit}>
     <div className='modal-inner'>
       <header><h2>Add Rule</h2></header>
       <div className='modal-content'>
         <h3>Conditions</h3>
+        <ConditionManager />
         <h3>Event</h3>
         <small>This is the event that is fired when the conditons are met for incoming facts.</small>
         <div className='field'>

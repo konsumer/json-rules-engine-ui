@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const ParamManager = ({params, onClickAdd, onParamRemove, onParamChange}) => (
+export const ParamManager = ({params, onClickAdd, onParamRemove, onParamChange}) => (
   <div className='params'>
     <label>Params</label>
     <button onClick={onClickAdd}> <i className='fa fa-plus'></i> </button>

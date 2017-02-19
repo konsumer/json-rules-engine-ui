@@ -16,7 +16,7 @@ const rule = (state = {rules: [], showRuleDialog: false, params: [], conditions:
       }
       const rules = state.rules.slice()
       rules.push(rule)
-      return {...state, rules}
+      return {...state, rules, conditions: {...state.conditions}}
 
     case 'rule:show':
       return {...state, showRuleDialog: true, params: []}
