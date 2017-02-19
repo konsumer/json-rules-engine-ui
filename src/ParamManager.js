@@ -8,8 +8,8 @@ const ParamManager = ({params, onClickAdd, onParamRemove, onParamChange}) => (
     <small>Your event will be called with these params.</small>
     <div className='param-list'>
       {params.map((p, i) => (<div key={i} className='param'>
-        <input placeholder='paramName' onChange={e => onParamChange(i, 0, e.target.value)} type='text' value={p[0]} />
-        <input placeholder='param value' onChange={e => onParamChange(i, 1, e.target.value)} type='text' value={p[1]} />
+        <input required placeholder='paramName' onChange={e => onParamChange(i, 0, e.target.value)} type='text' value={p[0]} />
+        <input required placeholder='param value' onChange={e => onParamChange(i, 1, e.target.value)} type='text' value={p[1]} />
         <button onClick={e => { onParamRemove(i); e.preventDefault() }} className='cancel'> <i className='fa fa-minus'></i> </button>
       </div>))}
     </div>
