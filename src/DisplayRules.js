@@ -8,7 +8,7 @@ export const DisplayRules = ({rules}) => (
 )
 
 const mapStateToProps = state => ({
-  rules: state.rules.rules
+  rules: state.rule.rules
 })
 
 export default connect(mapStateToProps)(DisplayRules)

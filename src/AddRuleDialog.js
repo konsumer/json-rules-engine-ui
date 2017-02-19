@@ -5,13 +5,13 @@ import FormAddRule from './FormAddRule'
 
 export const AddRuleDialog = ({showRuleDialog, onAddRule, onAddRuleCancel, onAddClick}) => (
   <div>
-    {!showRuleDialog && <button onClick={onAddClick} type='submit'>Add Rule</button>}
+    {!showRuleDialog && <button onClick={onAddClick} type='submit'> <i className='fa fa-plus'></i> add rule</button>}
     {showRuleDialog && <FormAddRule onSubmit={onAddRule} onCancel={onAddRuleCancel} />}
   </div>
 )
 
 const mapStateToProps = state => ({
-  showRuleDialog: state.rules.showRuleDialog
+  showRuleDialog: state.rule.showRuleDialog
 })
 
 const mapDispatchToProps = dispatch => ({

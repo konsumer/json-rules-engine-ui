@@ -1,7 +1,30 @@
 <html>
   <head>
     <title>json-rules-engine UI</title>
-    <link rel="stylesheet" href="http://yegor256.github.io/tacit/tacit.min.css"/>
+    <style>
+      @import url(http://yegor256.github.io/tacit/tacit.min.css);
+      @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+      .param-list,  .param-list .param {
+        display: flex;
+      }
+      .param-list,  .param-list {
+        flex-direction: column;
+      }
+      .param-list .param > * {
+        margin: 5px;
+      }
+      .param-list .param input {
+        flex: 1;
+      }
+      button.cancel {
+        background: #F13460;
+        color: black;
+      }
+      button.cancel:hover {
+        background: #C6002E;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
