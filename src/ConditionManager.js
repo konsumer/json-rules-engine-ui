@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-export const Condition = ({onConditionRemove, condition: {fact, operator, value, path}}) => (
+export const Condition = ({onConditionRemove, id, condition: {fact, operator, value, path}}) => (
   <div className='Condition'>
     <input type='text' placeholder='fact' defaultValue={fact} />
     <input type='text' placeholder='path' defaultValue={path} />
@@ -20,27 +20,36 @@ export const Condition = ({onConditionRemove, condition: {fact, operator, value,
       </select>
     </div>
     <input type='text' placeholder='value' defaultValue={value} />
-    <button onClick={e => { onConditionRemove('find this'); e.preventDefault() }} className='cancel'> <i className='fa fa-minus'></i> </button>
+    <button title='remove this condition' onClick={e => { onConditionRemove(id); e.preventDefault() }} className='cancel'> <i className='fa fa-minus'></i> </button>
   </div>
 )
 
-export const Conditions = ({conditions, op, onConditionRemove}) => (
-  <div className='Conditions' style={{marginLeft: 10}}>
-    {op === 'all' ? 'ALL' : 'ANY'}
+export const Conditions = ({conditions, op, opLabel, onConditionRemove, onConditionAdd, onOpChange, id}) => (
+  <fieldset className='Conditions' style={{marginLeft: 10}}>
+    <div>if {!opLabel
+      ? (
+      <select value={op} onChange={e => { onOpChange(id.split('.').slice(0, -1).join('.'), e.target.value) }} >
+        <option value='all'>ALL</option>
+        <option value='any'>ANY</option>
+      </select>
+    )
+      : <strong>{op}</strong>
+    } of these resolve to true:</div>
     {conditions.map((condition, i) => (
       <div key={i}>
-        {typeof condition.any === 'object' && <Conditions onConditionRemove={onConditionRemove} op='any' conditions={condition.any} />}
-        {typeof condition.all === 'object' && <Conditions onConditionRemove={onConditionRemove} op='all' conditions={condition.all} />}
-        {typeof condition.fact !== 'undefined' && <Condition onConditionRemove={onConditionRemove} condition={condition} />}
+        {typeof condition.any === 'object' && <Conditions id={`${id}.${i}.any`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='any' conditions={condition.any} />}
+        {typeof condition.all === 'object' && <Conditions id={`${id}.${i}.all`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='all' conditions={condition.all} />}
+        {typeof condition.fact !== 'undefined' && <Condition id={`${id}.${i}`} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} condition={condition} />}
       </div>
     ))}
-  </div>
+    <button title='add a condition to this group' onClick={e => { onConditionAdd(id); e.preventDefault() }}> <i className='fa fa-plus'></i> </button>
+  </fieldset>
 )
 
-export const ConditionManager = ({conditions, onConditionRemove}) => (
+export const ConditionManager = ({conditions, onConditionRemove, onConditionAdd, onOpChange}) => (
   <div className='ConditionManager'>
-    {typeof conditions.any === 'object' && <Conditions onConditionRemove={onConditionRemove} op='any' conditions={conditions.any} />}
-    {typeof conditions.all === 'object' && <Conditions onConditionRemove={onConditionRemove} op='all' conditions={conditions.all} />}
+    <Conditions id='.any' opLabel onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='any' conditions={conditions.any || []} />
+    <Conditions id='.all' opLabel onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='all' conditions={conditions.all || []} />
   </div>
 )
 
@@ -49,7 +58,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onConditionRemove: () => {}
+  onConditionRemove: (id) => {},
+  onConditionAdd: (id) => {},
+  onOpChange: (id, op) => {}
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConditionManager)

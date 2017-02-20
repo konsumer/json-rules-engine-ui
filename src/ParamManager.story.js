@@ -10,8 +10,8 @@ const demoParams = [
 
 storiesOf('ParamManager', module)
   .add('with no params', () => (
-    <ParamManager params={[]} onClickAdd={action('add')} onParamRemove={action('remove')} onParamChange={action('change')} />
+    <ParamManager params={[]} onClickAdd={action('add')} onClickRemove={action('remove')} onParamChange={action('change')} />
   ))
   .add('with some params', () => (
-    <ParamManager params={demoParams} onClickAdd={action('add')} onParamRemove={action('remove')} onParamChange={action('change')} />
+    <ParamManager params={demoParams} onClickAdd={action('add')} onClickRemove={action('remove')} onParamChange={action('change')} />
   ))
