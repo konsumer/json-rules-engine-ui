@@ -37,9 +37,9 @@ export const Conditions = ({conditions, op, opLabel, onConditionRemove, onCondit
     } of these resolve to true:</div>
     {conditions.map((condition, i) => (
       <div key={i}>
-        {typeof condition.any === 'object' && <Conditions id={`${id}.${i}.any`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='any' conditions={condition.any} />}
-        {typeof condition.all === 'object' && <Conditions id={`${id}.${i}.all`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='all' conditions={condition.all} />}
-        {typeof condition.fact !== 'undefined' && <Condition id={`${id}.${i}`} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} condition={condition} />}
+        {typeof condition.any === 'object' && <Conditions id={`${id}[${i}].any`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='any' conditions={condition.any} />}
+        {typeof condition.all === 'object' && <Conditions id={`${id}[${i}].all`} onOpChange={onOpChange} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} op='all' conditions={condition.all} />}
+        {typeof condition.fact !== 'undefined' && <Condition id={`${id}[${i}]`} onConditionAdd={onConditionAdd} onConditionRemove={onConditionRemove} condition={condition} />}
       </div>
     ))}
     <button title='add a condition to this group' onClick={e => { onConditionAdd(id); e.preventDefault() }}> <i className='fa fa-plus'></i> </button>
