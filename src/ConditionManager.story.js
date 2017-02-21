@@ -28,8 +28,8 @@ const demoConditions = {
 
 storiesOf('ConditionManager', module)
   .add('with no conditions', () => (
-    <ConditionManager onOpChange={action('change op')} onConditionAdd={action('add')} onConditionRemove={action('remove')} conditions={{}} />
+    <ConditionManager onFactChange={action('fact change')} onOpChange={action('change op')} onConditionAdd={action('add')} onConditionRemove={action('remove')} conditions={{}} />
   ))
   .add('with some conditions', () => (
-    <ConditionManager onOpChange={action('change op')} onConditionAdd={action('add')} onConditionRemove={action('remove')} conditions={demoConditions} />
+    <ConditionManager onFactChange={action('fact change')} onOpChange={action('change op')} onConditionAdd={action('add')} onConditionRemove={action('remove')} conditions={demoConditions} />
   ))

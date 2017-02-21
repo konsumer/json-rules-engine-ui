@@ -34,6 +34,7 @@ button {
     background: #c9c9c9;
   }
   &.cancel {
+    font-size: small;
     background: #F13460;
     color: black;
     &:hover {
@@ -73,6 +74,9 @@ select {
   }
   footer {
     padding-top: 10px;
+  }
+  .modal-content {
+    overflow: auto;
   }
 }
 
